@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Audio Recorder"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Capture and manage your recordings"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRecorder"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="48dp"
+        android:text="Start Recording"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:icon="@android:drawable/ic_btn_speak_now"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnList"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="16dp"
+        android:text="My Recordings"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:icon="@android:drawable/ic_menu_sort_by_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnRecorder" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnsettings"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Settings"
+        app:icon="@android:drawable/ic_menu_preferences"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
