@@ -1,6 +1,7 @@
 package com.example.recorder
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -72,6 +73,7 @@ class RecordingListActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     private fun loadAudioFiles() {
         audioList.clear()
         val collection = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -139,6 +141,7 @@ class RecordingAdapter(
         return ViewHolder(view)
     }
 
+    @SuppressLint("DefaultLocale", "SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val audio = recordings[position]
         holder.tvFileName.text = audio.name

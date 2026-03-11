@@ -55,12 +55,10 @@ class EditAudioActivity : AppCompatActivity() {
 
     private fun showRenameDialog() {
         val input = EditText(this)
-        // Show name without extension for easier editing
         val currentFile = File(audioPath ?: "")
         val nameWithoutExt = currentFile.nameWithoutExtension
         input.setText(nameWithoutExt)
         
-        // Add some padding to the EditText
         val container = FrameLayout(this)
         val params = FrameLayout.LayoutParams(
             FrameLayout.LayoutParams.MATCH_PARENT,
@@ -91,7 +89,6 @@ class EditAudioActivity : AppCompatActivity() {
 
         if (currentFile.exists()) {
             if (currentFile.renameTo(newFile)) {
-                // Update local state and UI
                 audioName = newFile.name
                 audioPath = newFile.absolutePath
                 tvCurrentName.text = audioName

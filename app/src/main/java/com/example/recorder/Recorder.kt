@@ -85,6 +85,7 @@ class Recorder : AppCompatActivity() {
         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.RECORD_AUDIO), 200)
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     private fun startRecording() {
         val fileName = "recording_${System.currentTimeMillis()}.mp3"
         
