@@ -1,6 +1,7 @@
 package com.example.recorder
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.pm.PackageManager
 import android.media.MediaRecorder
@@ -30,6 +31,7 @@ class Recorder : AppCompatActivity() {
     private var seconds = 0
     private val handler = Handler(Looper.getMainLooper())
     private val runnable = object : Runnable {
+        @SuppressLint("DefaultLocale")
         override fun run() {
             seconds++
             val hours = seconds / 3600
@@ -149,7 +151,6 @@ class Recorder : AppCompatActivity() {
 
         handler.removeCallbacks(runnable)
 
-        // Finalize the file in MediaStore
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && audioUri != null) {
             val values = ContentValues().apply {
                 put(MediaStore.Audio.Media.IS_PENDING, 0)
