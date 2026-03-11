@@ -1,8 +1,10 @@
 package com.example.recorder
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.materialswitch.MaterialSwitch
 
@@ -21,6 +23,10 @@ class SettingsActivity : AppCompatActivity(){
         val autoSave = findViewById<MaterialSwitch>(R.id.switchAutoSave)
         val darkMode = findViewById<MaterialSwitch>(R.id.switchDarkMode)
 
+
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        darkMode.isChecked = currentNightMode == Configuration.UI_MODE_NIGHT_YES
+
         quality.setOnCheckedChangeListener { _, isChecked ->
             val status = if (isChecked) "Enabled" else "Disabled"
             Toast.makeText(this, "High Quality $status", Toast.LENGTH_SHORT).show()
@@ -32,8 +38,13 @@ class SettingsActivity : AppCompatActivity(){
         }
 
         darkMode.setOnCheckedChangeListener { _, isChecked ->
-            val status = if (isChecked) "Enabled" else "Disabled"
-            Toast.makeText(this, "Dark Mode $status", Toast.LENGTH_SHORT).show()
+            if (isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                Toast.makeText(this, "Dark Mode Enabled", Toast.LENGTH_SHORT).show()
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                Toast.makeText(this, "Dark Mode Disabled", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
