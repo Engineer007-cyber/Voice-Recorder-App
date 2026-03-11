@@ -1,5 +1,6 @@
 package com.example.recorder
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Button
@@ -11,14 +12,13 @@ import java.io.IOException
 
 class PlayBackScreen : AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null
-
     private var audioPath: String? = null
     private var audioName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_playbackscreen)
+
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -27,13 +27,13 @@ class PlayBackScreen : AppCompatActivity() {
         audioPath = intent.getStringExtra("AUDIO_PATH")
         audioName = intent.getStringExtra("AUDIO_NAME")
 
-
         val tvTitle = findViewById<TextView>(R.id.tvAudioTitle)
         tvTitle.text = audioName ?: "Unknown Recording"
 
         val play = findViewById<Button>(R.id.btnPlay)
         val pause = findViewById<Button>(R.id.btnPause)
         val stop = findViewById<Button>(R.id.btnStop)
+        val edit = findViewById<Button>(R.id.btnEdit)
 
         play.setOnClickListener {
             playAudio()
@@ -45,6 +45,13 @@ class PlayBackScreen : AppCompatActivity() {
 
         stop.setOnClickListener {
             stopAudio()
+        }
+
+        edit.setOnClickListener {
+            val intent = Intent(this, EditAudioActivity::class.java)
+            intent.putExtra("AUDIO_PATH", audioPath)
+            intent.putExtra("AUDIO_NAME", audioName)
+            startActivity(intent)
         }
     }
 
@@ -61,8 +68,7 @@ class PlayBackScreen : AppCompatActivity() {
                     prepare()
                     start()
                 } catch (e: IOException) {
-                    Toast.makeText(this@PlayBackScreen, "Error playing audio", Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(this@PlayBackScreen, "Error playing audio", Toast.LENGTH_SHORT).show()
                 }
             }
         } else {

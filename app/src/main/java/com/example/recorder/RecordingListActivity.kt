@@ -1,7 +1,6 @@
 package com.example.recorder
 
 import android.Manifest
-import android.content.ContentUris
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -43,7 +42,10 @@ class RecordingListActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
+    }
 
+    override fun onResume() {
+        super.onResume()
         checkPermissions()
     }
 
@@ -71,6 +73,7 @@ class RecordingListActivity : AppCompatActivity() {
     }
 
     private fun loadAudioFiles() {
+        audioList.clear()
         val collection = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             MediaStore.Audio.Media.getContentUri(MediaStore.VOLUME_EXTERNAL)
         } else {

@@ -54,7 +54,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textSize="20sp"
         android:text="00:00 / 00:00"
         android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         android:alpha="0.7"
@@ -98,5 +97,17 @@
             app:icon="@android:drawable/ic_media_pause" />
 
     </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEdit"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Edit Recording"
+        app:icon="@android:drawable/ic_menu_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/controlsLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
